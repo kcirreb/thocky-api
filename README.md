@@ -217,5 +217,5 @@ Example response:
 }
 ```
 
-## Contact Me
-If you think there are mistakes in our data, feel free to tell me at koberrick11@gmail.com.
+## Contact Us
+If you have any questions or find any mistakes in our data, feel free to send an email to koberrick11@gmail.com.
