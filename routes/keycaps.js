@@ -39,12 +39,12 @@ router.get("/", authUser, async (req, res) => {
 // read one by id
 router.get("/:keycapsId", authUser, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.keycapsId)) {
-    res.status(400).json({ error: { message: "Invalid keycaps id." } });
+    res.status(400).json({ error: 400, message: "Invalid keycaps id." });
   } else {
     try {
       const record = await Keycap.findById(req.params.keycapsId, { __v: 0 });
       if (record) res.status(200).json(record);
-      else res.status(404).json({ error: { message: "Keycaps not found." } });
+      else res.status(404).json({ error: 404, message: "Keycaps not found." });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -70,12 +70,14 @@ router.post("/", authUser, authRole, async (req, res) => {
       res.status(200).json(record);
     } catch (err) {
       res.status(400).json({
-        error: { message: "Required fields missing." },
+        error: 400,
+        message: "Required fields missing.",
       });
     }
   } else {
     res.status(400).json({
-      error: { message: `Keycaps named ${req.body.name} exists already.` },
+      error: 400,
+      message: `Keycaps named ${req.body.name} exists already.`,
     });
   }
 });
@@ -83,10 +85,11 @@ router.post("/", authUser, authRole, async (req, res) => {
 // update one by id
 router.patch("/:keycapsId", authUser, authRole, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.keycapsId)) {
-    res.status(400).json({ error: { message: "Invalid keycaps id." } });
+    res.status(400).json({ error: 400, message: "Invalid keycaps id." });
   } else if (await Keycap.exists({ name: req.body.name })) {
     res.status(400).json({
-      error: { message: `Keycaps named ${req.body.name} exists already.` },
+      error: 400,
+      message: `Keycaps named ${req.body.name} exists already.`,
     });
   } else {
     try {
@@ -106,7 +109,7 @@ router.patch("/:keycapsId", authUser, authRole, async (req, res) => {
       record["__v"] = undefined;
       res.status(200).json(record);
     } catch (err) {
-      res.status(404).json({ error: { message: "Keycaps not found." } });
+      res.status(404).json({ error: 404, message: "Keycaps not found." });
     }
   }
 });
@@ -114,12 +117,12 @@ router.patch("/:keycapsId", authUser, authRole, async (req, res) => {
 // delete one by id
 router.delete("/:keycapsId", authUser, authRole, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.keycapsId)) {
-    res.status(400).json({ error: { message: "Invalid keycaps id." } });
+    res.status(400).json({ error: 400, message: "Invalid keycaps id." });
   } else {
     try {
       const record = await Keycap.findByIdAndRemove(req.params.keycapsId);
       if (record) res.sendStatus(204);
-      else res.status(404).json({ error: { message: "Keycaps not found." } });
+      else res.status(404).json({ error: 404, message: "Keycaps not found." });
     } catch (err) {
       res.status(500).json(err);
     }
