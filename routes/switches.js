@@ -32,12 +32,12 @@ router.get("/", authUser, async (req, res) => {
 // read one by id
 router.get("/:switchId", authUser, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.switchId)) {
-    res.status(400).json({ error: { message: "Invalid switch id." } });
+    res.status(400).json({ error: 400, message: "Invalid switch id." });
   } else {
     try {
       const record = await Switch.findById(req.params.switchId, { __v: 0 });
       if (record) res.status(200).json(record);
-      else res.status(404).json({ error: { message: "Switch not found." } });
+      else res.status(404).json({ error: 404, message: "Switch not found." });
     } catch (err) {
       res.status(500).json(err);
     }
@@ -64,12 +64,14 @@ router.post("/", authUser, authRole, async (req, res) => {
       res.status(200).json(record);
     } catch (err) {
       res.status(400).json({
-        error: { message: "Required fields missing." },
+        error: 400,
+        message: "Required fields missing.",
       });
     }
   } else {
     res.status(400).json({
-      error: { message: `Switch named ${req.body.name} exists already.` },
+      error: 400,
+      message: `Switch named ${req.body.name} exists already.`,
     });
   }
 });
@@ -77,10 +79,11 @@ router.post("/", authUser, authRole, async (req, res) => {
 // update one by id
 router.patch("/:switchId", authUser, authRole, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.switchId)) {
-    res.status(400).json({ error: { message: "Invalid switch id." } });
+    res.status(400).json({ error: 400, message: "Invalid switch id." });
   } else if (await Switch.exists({ name: req.body.name })) {
     res.status(400).json({
-      error: { message: `Switch named ${req.body.name} exists already.` },
+      error: 400,
+      message: `Switch named ${req.body.name} exists already.`,
     });
   } else {
     try {
@@ -101,7 +104,7 @@ router.patch("/:switchId", authUser, authRole, async (req, res) => {
       record["__v"] = undefined;
       res.status(200).json(record);
     } catch (err) {
-      res.status(404).json({ error: { message: "Switch not found." } });
+      res.status(404).json({ error: 404, message: "Switch not found." });
     }
   }
 });
@@ -109,12 +112,12 @@ router.patch("/:switchId", authUser, authRole, async (req, res) => {
 // delete one by id
 router.delete("/:switchId", authUser, authRole, async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.switchId)) {
-    res.status(400).json({ error: { message: "Invalid switch id." } });
+    res.status(400).json({ error: 400, message: "Invalid switch id." });
   } else {
     try {
       const record = await Switch.findByIdAndRemove(req.params.switchId);
       if (record) res.sendStatus(204);
-      else res.status(404).json({ error: { message: "Switch not found." } });
+      else res.status(404).json({ error: 404, message: "Switch not found." });
     } catch (err) {
       res.status(500).json(err);
     }
