@@ -8,7 +8,7 @@ function authUser(req, res, next) {
   if (!accessToken)
     return res
       .status(401)
-      .json({ error: { message: "Bearer token missing." } });
+      .json({ error: 401, message: "Bearer token missing." });
 
   try {
     const user = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
@@ -17,14 +17,14 @@ function authUser(req, res, next) {
   } catch (err) {
     return res
       .status(401)
-      .json({ error: { message: "Invalid bearer token." } });
+      .json({ error: 401, message: "Invalid bearer token." });
   }
 }
 
 async function authRole(req, res, next) {
   const record = await User.findById(req.user.id);
   if (!record.admin)
-    return res.status(403).json({ error: { message: "Access denied." } });
+    return res.status(403).json({ error: 403, message: "Access denied." });
   next();
 }
 
