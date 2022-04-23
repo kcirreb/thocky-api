@@ -13,8 +13,8 @@ function token(user) {
   );
   return {
     email: user.email,
-    "Token-Type": "Bearer",
-    "Access-Token": accessToken,
+    "token-type": "bearer",
+    "access-token": accessToken,
   };
 }
 
@@ -22,14 +22,14 @@ function token(user) {
 router.post("/", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password)
-    res.status(401).json({ error: { message: "Required fields missing." } });
+    res.status(401).json({ error: 401, message: "Required fields missing." });
   else {
     const user = await User.findOne({ email: email });
     if (user) {
       if (await bcrypt.compare(password, user.password)) {
         res.json(token(user));
       } else {
-        res.status(401).json({ error: { message: "Invalid credentials." } });
+        res.status(401).json({ error: 401, message: "Invalid credentials." });
       }
     } else {
       const hashedPassword = await bcrypt.hash(password, 10);
