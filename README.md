@@ -1,5 +1,5 @@
 # Thocky API :keyboard:
-A RESTful API for your next thocky keyboard. Get access to full specifications of swithces and keycaps.
+A RESTful API for your next thocky keyboard :drooling_face:. Get access to full specifications of swithces and keycaps :star_struck:.
 > Since the API is deployed on Heroku running on free dynos, your first request might take a bit longer.
 
 ## Our Database (as of 24 Apr 2022)
@@ -218,4 +218,4 @@ Example response:
 ```
 
 ## Contact Us
-If you have any questions or find any mistakes in our data, feel free to send an email to koberrick11@gmail.com.
+If you have any questions or find any mistakes in our data, feel free to send an email to koberrick11@gmail.com. Thanks!
