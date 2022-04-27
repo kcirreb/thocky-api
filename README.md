@@ -1,5 +1,5 @@
 # Thocky API :keyboard:
-A RESTful API for your next thocky keyboard :drooling_face:. Get access to full specifications of swithces and keycaps :star_struck:.
+A RESTful API for your next thocky keyboard :drooling_face:. Get access to full specifications of switches and keycaps :star_struck:.
 
 :point_right: https://thocky-api.herokuapp.com
 > Since the API is deployed on Heroku running on free dynos, your first request might take a bit longer.
