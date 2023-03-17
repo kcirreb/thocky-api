@@ -219,4 +219,4 @@ Example response:
 ```
 
 ## Contact Us
-If you have any questions or any suggestions, feel free to me send an [email](koberrick11@gmail.com). Thanks!
+If you have any questions or any suggestions, feel free to me send an [email](mailto:koberrick11@gmail.com). Thanks!
