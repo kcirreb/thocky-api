@@ -27,9 +27,9 @@ app.get("/", (req, res) => {
   res.status(200).json({
     message: "Welcome to Thocky API!",
     documentation: "https://github.com/kcirreb11/thocky-api",
-    token: "https://thocky-api.herokuapp.com/token",
-    switches: "https://thocky-api.herokuapp.com/switches",
-    keycaps: "https://thocky-api.herokuapp.com/keycaps",
+    token: "https://thocky-api.onrender.com/token",
+    switches: "https://thocky-api.onrender.com/switches",
+    keycaps: "https://thocky-api.onrender.com/keycaps",
   });
 });
 

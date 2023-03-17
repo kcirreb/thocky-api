@@ -1,8 +1,7 @@
 # Thocky API :keyboard:
-A RESTful API for your next thocky keyboard :drooling_face:. Get access to full specifications of switches and keycaps :star_struck:.
+A RESTful API for your next thocky keyboard. Get access to full specifications of switches and keycaps.
 
-:point_right: https://thocky-api.herokuapp.com
-> Since the API is deployed on Heroku running on free dynos, your first request might take a bit longer.
+Link: https://thocky-api.onrender.com
 
 ## Our Database (as of 24 Apr 2022)
 Switch collections completed (checked) and in progress:
@@ -19,7 +18,7 @@ Keycap collections completed (checked) and in progress:
 ## Overview
 Base URL:
 ```
-https://thocky-api.herokuapp.com
+https://thocky-api.onrender.com
 ```
 Endpoints:
 - [ Authentication ](#authentication)
@@ -35,7 +34,7 @@ Endpoints:
 ### `POST /token`
 To use the API, you have to first request an access token as follow:
 ```
-POST https://thocky-api.herokuapp.com/token
+POST https://thocky-api.onrender.com/token
 Content-Type: application/json
 
 {
@@ -53,7 +52,7 @@ You should receive a response in the following format:
 ```
 `<your-token>` is your access token and needs to be passed along the `Authorization` header with your request for other endpoints. For example:
 ```
-GET https://thocky-api.herokuapp.com/switches
+GET https://thocky-api.onrender.com/switches
 Authorization: Bearer <your-token>
 ```
 In case you lose your access token, you can request a new one through the `POST /token` endpoint, but `<your-password>` has to be the same as the one you used to register with `<your-email>`.
@@ -72,7 +71,7 @@ Optional query parameters:
 
 Example request:
 ```
-GET https://thocky-api.herokuapp.com/switches?brand=cherry-mx&type=tactile
+GET https://thocky-api.onrender.com/switches?brand=cherry-mx&type=tactile
 ```
 Example response:
 ```
@@ -111,7 +110,7 @@ Required path paramter:
 
 Example request:
 ```
-GET https://thocky-api.herokuapp.com/switches/62600eae6e437650b5e9f827
+GET https://thocky-api.onrender.com/switches/62600eae6e437650b5e9f827
 ```
 Example response:
 ```
@@ -161,7 +160,7 @@ Optional query parameters:
 
 Example request:
 ```
-GET http://thocky-api.herokuapp.com/keycaps?manufacturer=gmk&brand=drop
+GET https://thocky-api.onrender.com/keycaps?manufacturer=gmk&brand=drop
 ```
 Example response:
 ```
@@ -203,7 +202,7 @@ Required path paramter:
 
 Example request:
 ```
-http://thocky-api.herokuapp.com/keycaps/62606e068cface33adad69a2
+https://thocky-api.onrender.com/keycaps/62606e068cface33adad69a2
 ```
 Example response:
 ```
@@ -220,4 +219,4 @@ Example response:
 ```
 
 ## Contact Us
-If you have any questions or find any mistakes in our data, feel free to send an email to koberrick11@gmail.com. Thanks!
+If you have any questions or any suggestions, feel free to me send an [email](koberrick11@gmail.com). Thanks!
